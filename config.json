@@ -1,0 +1,32 @@
+{
+  "queueVoiceChannelId": "1431586879140003938",
+  "targetVoiceChannelIds": [
+    "1409178988026269797",
+    "1409179080435433513"
+  ],
+  "trioVoiceChannelIds": [
+    "1431640459884757133",
+    "1431640524367986740"
+  ],
+  "queueSize": 5,
+  "allowedRoleIds": [
+    "1409161026661912617"
+  ],
+  "modLogChannelId": "1432333029266948246",
+  "leaderboardChannelId": "1432333435854131220",
+  "leaderboardMessageId": "1432337216184651878",
+  "leaderboardType": "all",
+  "leaderboardSort": "matches",
+  "leaderboardLimit": 10,
+  "configMessageChannelId": "1431577673938767932",
+  "matchHistoryChannelId": "1432031536508702784",
+  "configMessageId": "1431683294868803584",
+  "matchTimeoutMinutes": 5,
+  "matchDeleteDelayMinutes": 5,
+  "last5QMatchMessageId": null,
+  "lastTrioMatchMessageId": null,
+  "activeMatches": {},
+  "afkCheckEnabled": true,
+  "afkTimeoutMinutes": 10,
+  "afkAction": "disconnect"
+}
