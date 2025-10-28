@@ -32,11 +32,61 @@ It manages ranked queues, player stats, and match histories — keeping every ga
 ### 📨 Queue Notifications
 - Get notified via DM when your queue is about to start.
 
----
-
 ## ⚙️ Installation
 
 ### 1️⃣ Clone the Repository
-```bash
+```
 git clone https://github.com/YOUR_USERNAME/Recall Queue.git
 cd ROGUEq
+```
+
+2️⃣ Install Dependencies
+```
+npm install
+```
+
+3️⃣ Configure Environment
+Create a .env file in the root directory:
+```
+DISCORD_TOKEN=your_discord_bot_token
+CLIENT_ID=your_discord_client_id
+GUILD_ID=your_test_guild_id
+MONGODB_URI=your_mongodb_connection_string   # if using MongoDB
+```
+
+4️⃣ Run the Bot
+```node index.js```
+
+or if you use PM2 for 24/7 hosting:
+
+```
+pm2 start index.js --name "ROGUEq"
+pm2 save
+```
+
+🔧 Commands Overview
+```
+Command	Description
+/join	Join the ranked queue
+/stats [user]	View player statistics
+/history [user]	Check recent matches
+/registermlbb <id>	Register your MLBB player ID
+/profile [user]	View linked MLBB profile
+/leaderboard	View top squad players
+/finishmatch	Log a match result
+```
+
+🧠 Future Development
+- 🛠️ Admin Config Panel for queue & match settings
+- 📅 Scheduled Leaderboard Resets
+- 🧾 Enhanced Match Analytics
+- 🌐 Web Dashboard Integration
+
+
+🤝 Contributing
+Contributions, bug reports, and feature requests are always welcome!
+Feel free to open an issue or submit a pull request.
+
+🧑‍💻 Author
+Raphael (Mcknbrd)
+Custom Discord Bot Developer
