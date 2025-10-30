@@ -1,92 +1,257 @@
-# 🌀 Recall Queue — Discord Queue System Bot
+🧠 Recall Queue — Project Definition
+🏷️ Project Name
 
-**Recall Queue** is a custom-built Discord bot written in **JavaScript (Node.js)**, designed for **competitive gaming communities**.  
-It manages ranked queues, player stats, and match histories — keeping every game fair, organized, and tracked automatically.
+Recall Queue
 
----
+🧩 Description
 
-## ✨ Features
+Recall Queue is a Discord bot built for Mobile Legends: Bang Bang communities.
+It helps members find teammates, form ranked squads, and track performance, turning an ordinary Discord server into a fully automated competitive hub.
 
-### 🧩 Queue System
-- Join ranked queues directly through voice channels.
-- Automatically moves full queues (5/5) into ranked voice channels.
-- Handles trio fallback (3/5 after timer).
-- Prevents manual joining of ranked VCs for fair queue control.
+All development is tracked via GitHub version control, with every feature, bug fix, and enhancement managed through branches, commits, and pull requests.
 
-### 📊 Player Stats
-- `/stats` — view your own stats or check another player’s.
-- Displays total games, winrate, and match-type breakdowns.
+🎯 Core Purpose
 
-### 🕹️ Match History
-- `/history` — see recent matches for yourself or others.
-- Every finished match is logged with player names, type, and result.
+Recall Queue isn’t a random matchmaking tool — it’s a team coordination system designed to help existing community members form 3Q and 5Q ranked teams efficiently.
 
-### 🪪 MLBB Player ID Linking
-- `/registermlbb` — link your Mobile Legends player ID.
-- `/profile` — view your registered ID or another player’s.
+It centralizes:
 
-### 🎓 Leaderboards
-- Dedicated leaderboard for top-performing players.
-- Automatically updates when matches finish.
+Queue management
 
-### 📨 Queue Notifications
-- Get notified via DM when your queue is about to start.
+Voice channel control
 
-## ⚙️ Installation
+Match tracking
 
-### 1️⃣ Clone the Repository
-```
-git clone https://github.com/YOUR_USERNAME/Recall Queue.git
-cd ROGUEq
-```
+MMR and stat progression
 
-2️⃣ Install Dependencies
-```
-npm install
-```
+Resulting in a seamless and structured ranked environment for your Discord community.
 
-3️⃣ Configure Environment
-Create a .env file in the root directory:
-```
-DISCORD_TOKEN=your_discord_bot_token
-CLIENT_ID=your_discord_client_id
-GUILD_ID=your_test_guild_id
-MONGODB_URI=your_mongodb_connection_string   # if using MongoDB
-```
+⚙️ Key Features
+🧩 Queue System
 
-4️⃣ Run the Bot
-```node index.js```
+Duo (2Q), Trio (3Q), and Full-Stack (5Q) modes
 
-or if you use PM2 for 24/7 hosting:
+Unified embed with Join/Leave buttons
 
-```
-pm2 start index.js --name "ROGUEq"
-pm2 save
-```
+Auto-refresh countdown cycle
 
-🔧 Commands Overview
-```
-Command	Description
-/join	Join the ranked queue
-/stats [user]	View player statistics
-/history [user]	Check recent matches
-/registermlbb <id>	Register your MLBB player ID
-/profile [user]	View linked MLBB profile
-/leaderboard	View top squad players
-/finishmatch	Log a match result
-```
+Dynamic embed updates:
 
-🧠 Future Development
-- 🛠️ Admin Config Panel for queue & match settings
-- 📅 Scheduled Leaderboard Resets
-- 🧾 Enhanced Match Analytics
-- 🌐 Web Dashboard Integration
+Players waiting
+
+Countdown timer
+
+Queue type
+
+Active teams formed
+
+🔒 Voice Channel Control
+
+Only queued users can join the Ranked Queue Lobby
+
+When queue fills, bot auto-moves players to a free ranked VC
+
+Leaving the queue removes VC access and disconnects the player
+
+🏆 Match Management & Verification
+
+Match records created when teams form
+
+Players submit results via:
+
+/match result:<win/loss> screenshot:<proof>
 
 
-🤝 Contributing
-Contributions, bug reports, and feature requests are always welcome!
-Feel free to open an issue or submit a pull request.
+Staff verify results with buttons (Approve Win / Approve Loss)
 
-🧑‍💻 Author
-Raphael (Mcknbrd)
-Custom Discord Bot Developer
+Verified matches update player MMR and stats
+
+Auto-post summary embed in #match-history
+
+👤 Player Profiles & Stats
+
+Persistent player data includes:
+
+Discord ID & Username
+
+MLBB ID / IGN
+
+Rank (Mythic, Legend, etc.)
+
+Preferred Roles
+
+Matches Played, Wins, Losses, MMR, Winrate
+
+Cooldown/AFK state
+
+Commands:
+
+/profile — View stats
+
+/registermlbb — Link MLBB account
+
+/queueinfo — Show queue status
+
+🕓 Anti-AFK & Cooldowns
+
+Leaving mid-queue or dodging applies cooldowns
+
+Cooldown displayed when trying to requeue
+
+🧠 Rank-Based Grouping (Planned)
+
+Future teammate recommendations by MMR and rank tier
+
+📊 Match History
+
+Auto-post verified match summaries showing:
+
+Queue type (3Q/5Q)
+
+Player MMR changes
+
+VC used
+
+Date & time
+
+🧰 Tech Stack
+Area	Technology
+Runtime	Node.js (ESM modules)
+Discord API	Discord.js v14
+Database	MongoDB + Mongoose
+Scheduler	Native setInterval
+Language	JavaScript (ESM)
+Hosting	VPS / Linux
+Version Control	GitHub
+Auth	Discord Bot Token + Guild Config
+🗂️ Project Structure
+RecallQ/
+├── commands/
+│   ├── joinqueue.js
+│   ├── leavequeue.js
+│   ├── matchResult.js
+│   ├── matchVerify.js
+│   ├── profile.js
+│   ├── queueinfo.js
+│   ├── registermlbb.js
+│   └── ping.js
+├── config/
+│   └── config.js
+├── events/
+│   ├── ready.js
+│   └── interactionCreate.js
+├── models/
+│   ├── player.model.js
+│   ├── queue.model.js
+│   └── match.model.js
+├── utils/
+│   ├── logger.js
+│   ├── queueManager.js
+│   ├── queueAccess.js
+│   ├── queueUI.js
+│   ├── playerManager.js
+│   ├── database.js
+│   └── registerCommands.js
+└── index.js
+
+🚀 Long-Term Goals
+
+Rank-based teammate recommendations
+
+Automatic verification via MLBB API / OCR
+
+Seasonal leaderboards
+
+Tournament mode
+
+Web dashboard (queue management, player insights)
+
+Full CI/CD GitHub pipeline
+
+🧩 GitHub Workflow & Version Control
+🔀 Branching Strategy
+
+The project follows a simple but scalable Git Flow:
+
+main → production-ready releases  
+dev → main integration branch for testing  
+feature/* → individual feature branches  
+fix/* → bugfix branches  
+hotfix/* → urgent production fixes
+
+
+Example Workflow
+
+# Clone project
+git clone https://github.com/<username>/RecallQ.git
+cd RecallQ
+
+# Create and switch to dev
+git checkout -b dev
+
+# Start a new feature
+git checkout -b feature/queue-ui
+
+# Make changes, then commit
+git add .
+git commit -m "feat(queue-ui): added unified queue embed and join/leave logic"
+
+# Push feature branch
+git push -u origin feature/queue-ui
+
+# Open PR → dev → main
+
+
+Merging Flow:
+
+Work happens in feature/* or fix/* branches.
+
+Pull Requests merge into dev.
+
+Once stable, dev merges into main.
+
+Tagged releases (e.g. v1.0.0) are deployed.
+
+✍️ Commit Message Convention
+
+Follow Conventional Commits for clear history and changelogs:
+
+Type	Purpose
+feat:	A new feature
+fix:	A bug fix
+docs:	Documentation updates
+style:	Formatting, linting
+refactor:	Code restructure without feature change
+test:	Adding or updating tests
+chore:	Maintenance or tooling changes
+
+Examples:
+
+feat(queue-system): add queue auto-refresh with countdown
+fix(voice-control): prevent unauthorized users from joining VC
+docs(readme): add setup instructions
+
+🧱 Recommended Branch Naming
+Branch Type	Format	Example
+Feature	feature/<feature-name>	feature/match-verification
+Fix	fix/<issue>	fix/queue-countdown
+Hotfix	hotfix/<issue>	hotfix/mmr-calculation
+Docs	docs/<topic>	docs/readme-update
+🪄 Release Tags
+
+When merging stable builds into main, tag versions using semantic versioning:
+
+v1.0.0 — Initial release  
+v1.1.0 — Minor feature additions  
+v1.1.1 — Small bug fixes  
+
+
+Example:
+
+git tag -a v1.0.0 -m "Initial stable release"
+git push origin v1.0.0
+
+📄 Project Summary (Short Version for GitHub Description)
+
+Recall Queue is a Discord bot for a Mobile Legends community that helps members find teammates, manage ranked queues, and track performance.
+It supports Duo, Trio, and Full-Stack queueing, voice channel control, match verification, and MMR tracking — fully version-controlled via GitHub.
